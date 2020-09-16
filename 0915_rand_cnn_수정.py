@@ -109,7 +109,6 @@ for depth in range(5):                           #깊이정하기
     add_layer_num=random.randint(0,len(net_list)-1)
     for _ in range( random.randint(0,len(net_list)-1) ): #random개만큼 add한다
       a_layer_num=random.randint(0,len(net_list)-1)
-      add_list.append(a_layer_num)
       c=make_short_cut(net_list[a_layer_num],output)
       output=c
     net_list.append(net_list)
