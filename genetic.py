@@ -6,7 +6,7 @@
 import random
 import operator
 import copy
-import file_writer_test as fm
+import file_writer as fm
 import subprocess
 import datetime
 import os
