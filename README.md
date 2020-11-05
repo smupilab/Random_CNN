@@ -17,3 +17,5 @@ python3 genetic.py
 상명대학교 박희민 교수님 연구생
 조한희, 손은영
 
+### Contributors
+최지원, 손병욱, 이화경
