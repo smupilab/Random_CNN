@@ -17,6 +17,10 @@ linux환경으로 같은 디렉토리에 file_writer.py, genetic.py파일을 넣
 python3 genetic.py
 ```
 
+### Patch Note
+1124 EarlyStopping 구현
+1125 최고성능 네트워크 형태를 png파일로 저장
+
 
 ### Built with
 상명대학교 박희민 교수님 연구생  
