@@ -18,7 +18,7 @@ python3 genetic.py
 ```
 
 ### Patch Note
-1124 EarlyStopping 구현
+1124 EarlyStopping 구현  
 1125 최고성능 네트워크 형태를 png파일로 저장
 
 
