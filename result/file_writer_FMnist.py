@@ -24,6 +24,7 @@ def fileMaker(gene, index = None, parent = None):
     # import
     f.write("\n")
     f.write('''import tensorflow as tf
+from tensorflow.keras.utils import plot_model
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras import datasets
@@ -78,12 +79,10 @@ def make_rand(net_list):
     f.write('''
 img_rows = 28
 img_cols = 28
-
-(x_train, y_train), (x_test, y_test) = keras.datasets.fashion_mnist.load_data()
+(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
 (x_train, x_test) = x_train[:30000], x_test[:1000]
 (y_train, y_test) = y_train[:30000], y_test[:1000]
 input_shape = (img_rows, img_cols, 1)
-
 batch_size = 128
 num_classes = 10\n''')
     f.write("epochs =" + str(epoch) + "\n\n")
@@ -99,7 +98,6 @@ num_classes = 10\n''')
     f.write('''
 net_list=list()
 add_num=0
-
 for _ in range(depth):
   a=make_rand(net_list)
   net_list.extend(a)
@@ -135,6 +133,7 @@ for _ in range(depth):
         f.write("output = layers.Dense(10, activation = 'softmax', name='output')(dropout)\n\n")
 
     f.write("model = keras.Model(inputs = inputs, outputs = output)\n")
+    f.write("plot_model(model, to_file=\'model_shapes"+str(index)+".png\', show_shapes=True)\n")
     f.write("model.summary()\n\n")
 
     f.write("model.compile(loss='categorical_crossentropy', optimizer = opt, metrics=['accuracy'])\n")
