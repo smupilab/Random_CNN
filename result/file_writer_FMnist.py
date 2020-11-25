@@ -79,7 +79,7 @@ def make_rand(net_list):
     f.write('''
 img_rows = 28
 img_cols = 28
-(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+(x_train, y_train), (x_test, y_test) = keras.datasets.fashion_mnist.load_data()
 (x_train, x_test) = x_train[:30000], x_test[:1000]
 (y_train, y_test) = y_train[:30000], y_test[:1000]
 input_shape = (img_rows, img_cols, 1)
