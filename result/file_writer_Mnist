@@ -24,6 +24,7 @@ def fileMaker(gene, index = None, parent = None):
     # import
     f.write("\n")
     f.write('''import tensorflow as tf
+from tensorflow.keras.utils import plot_model
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras import datasets
@@ -132,6 +133,7 @@ for _ in range(depth):
         f.write("output = layers.Dense(10, activation = 'softmax', name='output')(dropout)\n\n")
 
     f.write("model = keras.Model(inputs = inputs, outputs = output)\n")
+    f.write("plot_model(model, to_file=\'model_shapes"+str(index)+".png\', show_shapes=True)\n")
     f.write("model.summary()\n\n")
 
     f.write("model.compile(loss='categorical_crossentropy', optimizer = opt, metrics=['accuracy'])\n")
