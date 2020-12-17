@@ -4,8 +4,9 @@ RandomCNN과 유전 알고리즘을 이용한 네트워크 최적화
 ### Dataset
 * Mnist (Accuracy:99.3%)   
 * FashionMnist (Accuracy:93.1%)   
-* Cifar10  
-* Cifar100  
+* Cifar10 *  
+* Cifar100  *  
+*/*는 미구현*
 
 ### Running the test
 randomCNN network를 `file_writer.py` 이용하여 작성 
