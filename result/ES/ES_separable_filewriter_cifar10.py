@@ -81,6 +81,7 @@ def make_rand(net_list):
     f.write('''
 img_rows = 32
 img_cols = 32
+batch_size=128
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 num_classes = 10
 \n''')
@@ -100,6 +101,7 @@ x_test = x_test.astype('float32') / 255.
 
     # !
     f.write("inputs = x_train.shape[1:]\n")
+    f.write("inputs = keras.Input(shape = inputs)\n")
     f.write("output = layers.Conv2D(filters = 64, kernel_size = [ks, ks], padding = 'same', activation = actF)(inputs)\n")
     f.write('''
 net_list=list()
