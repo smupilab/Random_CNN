@@ -6,7 +6,7 @@
 import random
 import operator
 import copy
-import separable_ES_filewriter_Fmnist as fm
+import filewriter_Fmnist as fm
 import subprocess
 import datetime
 import os
