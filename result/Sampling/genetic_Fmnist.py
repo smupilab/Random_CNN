@@ -1,7 +1,12 @@
+# coding: utf-8
+
+# In[ ]:
+
+
 import random
 import operator
 import copy
-import file_writer_Fmnist as fm
+import separable_ES_filewriter_Fmnist as fm
 import subprocess
 import datetime
 import os
@@ -68,7 +73,7 @@ def mutate(selected_chromosome, mutateSize):
 def mutateGene(gene):
     mutated_gene = copy.deepcopy(gene)
     rand = random.randint(4, 5)
-    choiceInd = random.sample([1, 2, 3, 4, 5, 6, 7, 8, 9], rand)
+    choiceInd = random.sample([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], rand)
     for i in range(0, len(choiceInd)):
         if choiceInd[i] == 1:
             # mutate lr
@@ -101,7 +106,7 @@ def mutateGene(gene):
             mutated_gene[9] = abs(mutated_gene[9] + random.choice([-10, -5, 5, 10]))
         elif choiceInd[i] == 10:
             #mutate bypass
-            mutated_gene[10] =random.choice([1,2,3,4,5]) 
+            mutated_gene[10] =abs(mutated_gene[10]+ random.choice([-1,1])) 
 
     return mutated_gene
 
@@ -111,9 +116,10 @@ def breed(selected_chromosome, popSize, breedSize, plist):
         son = []
         randInd = random.sample(range(0, popSize-breedSize), 2)
         plist.append(randInd[0])
+        print('random int in functuin breed:',randInd)
         mom = copy.deepcopy(selected_chromosome[randInd[0]])
         dad = copy.deepcopy(selected_chromosome[randInd[1]])
-        sep = random.randint(2, 9)
+        sep = random.randint(2, 10)
         for j in range(0, len(mom)):
             if j < sep:
                 son.append(mom[j])
@@ -125,10 +131,10 @@ def breed(selected_chromosome, popSize, breedSize, plist):
     return nextGeneration, plist
 
 generation = 30
-popSize = 10
-mutateSize = 3
-selectSize = 3
-breedSize = 4
+popSize = 100
+mutateSize = 20
+selectSize = 40
+breedSize = 40
 nextGeneration = []
 
 for i in range(0, popSize):
@@ -143,7 +149,7 @@ for i in range(0, popSize):
     fcn_layer = random.choice([1, 2, 3])
     dropout = random.uniform(0, 0.5)
     epoch = random.choice([5, 10, 15, 20])
-    byp = random.choice([1,2,3,4,5])
+    byp = random.choice([0,1,2,3,4,5])
     nextGeneration.append([fitness, lr, init_W, opt, actF, kernel_size, depth, fcn_layer, dropout, epoch, byp, i])
 
 now = datetime.datetime.now()
@@ -180,6 +186,7 @@ for i in range(0, generation):
     mutated_chromosome = mutate(copy.deepcopy(selected_chromosome), copy.deepcopy(mutateSize))
 
     plist = [i for i in range(selectSize)]
+    print(plist)
     nextGeneration = copy.deepcopy(selected) + copy.deepcopy(mutated_chromosome)
     nextGeneration, plist = breed(copy.deepcopy(nextGeneration), copy.deepcopy(popSize), copy.deepcopy(breedSize), copy.deepcopy(plist))
 
@@ -221,6 +228,7 @@ for i in range(popSize):
     log.write(str(nextGeneration[i])+"\n")
 log.close()
 print(" progress =", progress)
+
 
 import tensorflow as tf
 from tensorflow import keras
