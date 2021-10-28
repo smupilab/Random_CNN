@@ -26,7 +26,7 @@ python3 genetic.py
 
 ### Built with
 상명대학교 박희민 교수님 연구생  
-조한희
+오채은
 
 ### Contributors
-최지원, 손병욱, 이화경, 손은영
+최지원, 손병욱, 이화경, 손은영, 조한희
